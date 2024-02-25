@@ -9,22 +9,14 @@ SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
 
-class Note(Base):
-    __tablename__ = "notes"
-    id = Column(Integer, primary_key=True, index=True)
-    name = Column(String(50))
-    description = Column(String(250))
-    done = Column(Boolean, default=False)
-
-
-class User(Base):
+class Contact(Base):
     __tablename__ = "users"
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String(50))
     lastname = Column(String(50))
     email = Column(String(50))
     phone = Column(String(50))
-    born_date = Date()
+    born_date = Column(Date, comment="Contact's birthday")
     description = Column(String(250))
 
 
